@@ -1,25 +1,24 @@
-// Step 1: Import the mysql2 Library
-const mysql = require('mysql2');
-require('dotenv').config();
-// Step 2: Create a Database Connection
-// A connection to the MySQL database is created using the createConnection method.
-const connection = mysql.createConnection({
-host: process.env.DB_HOST, // Database host, usually 'localhost' or an IP address
-user: process.env.DB_USER, // Database username
-password: process.env.DB_PASSWORD, // Database password
-database: process.env.DB_NAME, // Database name to connect to
+// Step 1: Import Required Libraries
+const express = require('express');
+const app = express();
+// Step 2: Import Controllers
+// Import the employee controller to handle employee-related routes.
+// const employeeController = require('./controllers/employee');
+// Step 3: Middleware Setup
+// Use express.json() to parse incoming JSON requests.
+// Use express.static() to serve static files from the 'public' directory.
+// app.use(express.json());
+// app.use(express.static('public'));
+// Step 4: Define Routes
+// Set up a GET route for '/employee' that invokes the getAllEmployees method 
+// from the employee controller. For the dropdownmenu selection, use a different
+// method called getEmployeeDetails
+// app.get('/employee', employeeController.getAllEmployees);
+// app.get('/employee/details', employeeController.getEmployeeDetails);
+// Step 5: Start the Server
+// Define the port the server will listen on, defaulting to 5000 if not specified in environment variables.
+const PORT = process.env.PORT || 5000;
+// Start the server and log a message indicating the URL.
+app.listen(PORT, () => {
+console.log(`Server running on http://localhost:${PORT}`);
 });
-// Step 3: Connect to the Database
-// The connect method is called on the connection object to establish the connection.
-connection.connect(err => {
-if (err) {
-// If there is an error, log it to the console and exit the connection.
-console.error('Database connection failed:', err.stack);
-return;
-}
-// If the connection is successful, log a success message.
-console.log('Connected to the database.');
-});
-// Step 4: Export the Connection
-// The connection object is exported using module.exports, allowing other modules to use this db connection.
-module.exports = connection;
