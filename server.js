@@ -7,8 +7,8 @@ const app = express();
 // Step 3: Middleware Setup
 // Use express.json() to parse incoming JSON requests.
 // Use express.static() to serve static files from the 'public' directory.
-// app.use(express.json());
-// app.use(express.static('public'));
+app.use(express.json());
+app.use(express.static('public'));
 // Step 4: Define Routes
 // Set up a GET route for '/employee' that invokes the getAllEmployees method 
 // from the employee controller. For the dropdownmenu selection, use a different
