@@ -4,6 +4,8 @@ const app = express();
 // Step 2: Import Controllers
 // Import the employee controller to handle employee-related routes.
 // const employeeController = require('./controllers/employee');
+
+const salesPerformanceController = require('./controllers/salesPerformance.js');
 // Step 3: Middleware Setup
 // Use express.json() to parse incoming JSON requests.
 // Use express.static() to serve static files from the 'public' directory.
@@ -15,6 +17,7 @@ app.use(express.static('public'));
 // method called getEmployeeDetails
 // app.get('/employee', employeeController.getAllEmployees);
 // app.get('/employee/details', employeeController.getEmployeeDetails);
+app.get('/salesPerformance', salesPerformanceController.getSalesPerformance);
 // Step 5: Start the Server
 // Define the port the server will listen on, defaulting to 5000 if not specified in environment variables.
 const PORT = process.env.PORT || 5000;
