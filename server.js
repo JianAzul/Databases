@@ -1,11 +1,13 @@
 // Step 1: Import Required Libraries
 const express = require('express');
 const app = express();
+
 // Step 2: Import Controllers
 // Import the employee controller to handle employee-related routes.
 // const employeeController = require('./controllers/employee');
 
-const salesPerformanceController = require('./controllers/salesPerformance.js');
+const salesPerformanceController = require('./controller/salesPerformance.js');
+
 // Step 3: Middleware Setup
 // Use express.json() to parse incoming JSON requests.
 // Use express.static() to serve static files from the 'public' directory.
