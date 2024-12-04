@@ -6,12 +6,14 @@ const getSalesPerformance = (req, res) => {
 
     /* 
         TO DO:
+        Find out what query does 
         Change const projectName variable to match the query
         Apply query; Also consider looking at query to see if that type of query
                      is needed to match the pattern
     */
 
-    const projectName = req.query.projectName; // Get project name from query parameter
+    const total_units_sold = req.query.total_units_sold; // Get total_units_sold from query parameter
+
     const query = `
         SELECT
         p.Itemno,
@@ -24,9 +26,10 @@ const getSalesPerformance = (req, res) => {
         FROM PRODUCTS p
         LEFT JOIN ORDERITEMS oi ON p.Itemno = oi.Itemno
         GROUP BY p.Itemno, p.Category, p.Colormain, p.Price
-        ORDER BY total_revenue DESC;
+        HAVING total_units_sold >= ?
+        ORDER BY total_revenue DESC
     `;
-    db.query(query, [projectName], (err, results) => {
+    db.query(query, [total_units_sold], (err, results) => {
         if (err) {
             return res.status(500).json({ error: 'Error fetching performance data' });
         }

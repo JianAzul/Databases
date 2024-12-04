@@ -1,0 +1,72 @@
+<!-- public/salesPerformance.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCSS 445 | PHASE III | Sales Performance Search</title> <!--CHANGE LATER?-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/minty/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Search Sales Performance Information</h2>
+        <form id="projectForm">
+            <label for="projectName" class="form-label">Enter Minimum units sold:</label>
+            <input type="text" id="total_units_sold" class="form-control mb-3" placeholder="Enter Minimum units sold" required> <!--HAD TO CHANGE THIS LINE(in case i gotta change again)-->
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        <!-- Table for displaying results -->
+        <div id="resultSection" class="mt-4" style="display: none;">
+            <h3>Project Details</h3>
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Item number</th>
+                        <th>Category</th>
+                        <th>Main Color</th>
+                        <th>Price</th>
+                        <th>Times Ordered</th>
+                        <th>Total Units Sold</th>
+                        <th>Total Revenue</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+    </div>
+    <!-- JavaScript for handling form submission and displaying results -->
+    <script>
+        document.getElementById('projectForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+            const total_units_sold = document.getElementById('total_units_sold').value;
+            const response = await fetch(`/salesPerformance?total_units_sold=${encodeURIComponent(total_units_sold)}`);
+            const tableBody = document.getElementById('tableBody');
+            tableBody.innerHTML = ''; // Clear previous results
+            const resultSection = document.getElementById('resultSection');
+            if (response.ok) {
+                const data = await response.json();
+                data.forEach(({ Itemno, Category, Colormain, Price, times_ordered, total_units_sold, total_revenue }) => {
+                    tableBody.innerHTML += `
+                        <tr>
+                        <td>${Itemno}</td>
+                        <td>${Category}</td>
+                        <td>${Colormain}</td>
+                        <td>${Price}</td>
+                        <td>${times_ordered}</td>
+                        <td>${total_units_sold}</td>
+                        <td>${total_revenue}</td>
+                        </tr>
+                    `;
+                });
+                resultSection.style.display = 'block';
+            } else {
+                resultSection.style.display = 'block';
+                resultSection.innerHTML = `<p class="text-danger">No units sold found with that amount.</p>`;
+            }
+        });
+    </script>
+</body>
+
+</html>
