@@ -6,7 +6,7 @@ const app = express();
 // Import the employee controller to handle employee-related routes.
 // const employeeController = require('./controllers/employee');
 
-const salesPerformanceController = require('./controller/salesPerformance.js');
+const salesPerformanceController = require('./controller/salesPerformance');
 
 // Step 3: Middleware Setup
 // Use express.json() to parse incoming JSON requests.
@@ -25,5 +25,5 @@ app.get('/salesPerformance', salesPerformanceController.getSalesPerformance);
 const PORT = process.env.PORT || 5000;
 // Start the server and log a message indicating the URL.
 app.listen(PORT, () => {
-console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on http://localhost:${PORT}`);
 });
