@@ -1,0 +1,25 @@
+<!-- public/orders.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCSS 445 | PHASE III | Orders by last name search</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/minty/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Search Customer Information</h2>
+        <form action="/orders" method="GET">
+            <div class="mb-3">
+                <label for="lastName" class="form-label">Enter Last Name:</label>
+                <input type="text" id="lastName" name="lastName" class="form-control" required placeholder="Last Name">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+</body>
+
+</html>
