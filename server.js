@@ -24,10 +24,10 @@ app.use(express.static('public'));
 // app.get('/employee', employeeController.getAllEmployees);
 // app.get('/employee/details', employeeController.getEmployeeDetails);
 app.get('/salesPerformance', salesPerformanceController.getSalesPerformance);
-app.get('/customerOrders', ordersController.getCustomerOrders);
+app.get('/api/customer-orders', ordersController.getCustomerOrders);
 app.get('/recommendedProducts', recommendedProductsController.getRecommendationById);
 app.get('/productOrderHistory', productOrderHistoryController.getCustomers);
-app.get('/blackProductCustomers', productOrderHistoryController.getCustomers);
+app.get('/api/black-product-customers', blackProductCustomersController.getBlackProductCustomers);
 
 // Step 5: Start the Server
 // Define the port the server will listen on, defaulting to 5000 if not specified in environment variables.
