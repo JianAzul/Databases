@@ -6,7 +6,7 @@ const db = require('../dbConfig');
 * It uses the db.query method to execute a SQL query and handles errors gracefully.
 */
 const getRecommendationById = (req, res) => {
-    const userId = req.query.userId; // Get last name from query parameter
+    const userId = req.query.userId; // Get user Id name from query parameter
     const query = `
         WITH OrderHistory AS (
             SELECT p.Itemno, p.Category, p.Colormain, p.Colorsecondary
