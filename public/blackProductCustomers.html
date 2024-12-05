@@ -1,0 +1,67 @@
+<div class="container mt-5">
+    <h2>Customers Interested in Black Products</h2>
+    
+    <div class="alert alert-info mt-3">
+        This report shows customers who have added black-colored items to their wishlists.
+    </div>
+
+    <button id="fetchCustomers" class="btn btn-primary mt-3">
+        Find Interested Customers
+    </button>
+
+    <div id="resultSection" class="mt-4" style="display: none;">
+        <h3>Customer List</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Customer ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                </tr>
+            </thead>
+            <tbody id="resultsBody">
+            </tbody>
+        </table>
+        <div id="customerCount" class="mt-3 text-muted">
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('fetchCustomers').addEventListener('click', async () => {
+    try {
+        const response = await fetch('/api/black-product-customers');
+        if (!response.ok) {
+            throw new Error('Failed to fetch data');
+        }
+        const data = await response.json();
+        
+        const resultSection = document.getElementById('resultSection');
+        const resultsBody = document.getElementById('resultsBody');
+        const customerCount = document.getElementById('customerCount');
+        
+        // Clear previous results
+        resultsBody.innerHTML = '';
+        
+        // Add new results
+        data.forEach(customer => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${customer.customerid}</td>
+                <td>${customer.firstname}</td>
+                <td>${customer.lastname}</td>
+            `;
+            resultsBody.appendChild(tr);
+        });
+        
+        // Update customer count
+        customerCount.textContent = `Total customers found: ${data.length}`;
+        
+        // Show the results section
+        resultSection.style.display = 'block';
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error fetching customer data');
+    }
+});
+</script>
