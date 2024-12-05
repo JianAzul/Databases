@@ -1,7 +1,7 @@
 //Pattern 1
 const db = require('../dbConfig');
 /**
-* The getOrdersByLastName function in a Node.js application retrieves employee data by
+* The getOrdersByLastName function in a Node.js application retrieves order data by
 * last name from a database and generates an HTML response for display. 
 * It uses the db.query method to execute a SQL query and handles errors gracefully.
 */
