@@ -30,8 +30,6 @@ const getRecommendationById = (req, res) => {
         }
         // Generate HTML response
         let html = `
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/minty/bootstrap.min.css">
-            <div class="container mt-5">
             <h3>Recommendation Details for Id: ${userId}</h3>
         `;
         if (results.length === 0) {
