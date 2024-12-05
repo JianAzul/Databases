@@ -7,7 +7,7 @@ const app = express();
 // const employeeController = require('./controllers/employee');
 
 const salesPerformanceController = require('./controller/salesPerformance');
-const ordersController = require('./controller/Orders');
+const ordersController = require('./controller/customerOrders');
 const recommendedProductsController = require('./controller/recommendedProducts');
 const productOrderHistoryController = require('./controller/productOrderHistory');
 
@@ -23,7 +23,7 @@ app.use(express.static('public'));
 // app.get('/employee', employeeController.getAllEmployees);
 // app.get('/employee/details', employeeController.getEmployeeDetails);
 app.get('/salesPerformance', salesPerformanceController.getSalesPerformance);
-app.get('/orders', ordersController.getOrdersByLastName);
+app.get('/customerOrders', ordersController.getCustomerOrders);
 app.get('/recommendedProducts', recommendedProductsController.getRecommendationById);
 app.get('/productOrderHistory', productOrderHistoryController.getCustomers);
 // Step 5: Start the Server
