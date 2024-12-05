@@ -2,14 +2,20 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCSS 445 | PHASE III | Sales Performance Search</title> <!--CHANGE LATER?-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/minty/bootstrap.min.css">
+</head>
+
 <body>
     <div class="container mt-5">
         <h2>Search Sales Performance Information</h2>
         <form id="projectForm">
             <label for="projectName" class="form-label">Enter Minimum units sold:</label>
-            <input type="text" id="total_units_sold" class="form-control mb-3" placeholder="Enter Minimum units sold" required> 
+            <input type="text" id="total_units_sold" class="form-control mb-3" placeholder="Enter Minimum units sold" required> <!--HAD TO CHANGE THIS LINE(in case i gotta change again)-->
             <button type="submit" class="btn btn-primary">Search</button>
-            <!-- <button id="fetchCustomers" class="btn btn-primary mt-3"> -->
         </form>
         <!-- Table for displaying results -->
         <div id="resultSection" class="mt-4" style="display: none;">
