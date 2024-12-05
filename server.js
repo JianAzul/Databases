@@ -8,6 +8,7 @@ const app = express();
 
 const salesPerformanceController = require('./controller/salesPerformance');
 const ordersController = require('./controller/Orders');
+const recommendedProductsController = require('./controller/recommendedProducts')
 
 // Step 3: Middleware Setup
 // Use express.json() to parse incoming JSON requests.
@@ -22,7 +23,7 @@ app.use(express.static('public'));
 // app.get('/employee/details', employeeController.getEmployeeDetails);
 app.get('/salesPerformance', salesPerformanceController.getSalesPerformance);
 app.get('/orders', ordersController.getOrdersByLastName)
-// app.get('/query8', temp)
+app.get('/recommendedProducts', recommendedProductsController.getRecommendationById);
 // Step 5: Start the Server
 // Define the port the server will listen on, defaulting to 5000 if not specified in environment variables.
 const PORT = process.env.PORT || 5000;

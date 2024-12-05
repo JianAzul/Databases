@@ -1,0 +1,25 @@
+<!-- public/recommendedProducts.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCSS 445 | PHASE III | Recommended Products by Customer user id search</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/minty/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Search Customer Information</h2>
+        <form action="/recommendedProducts" method="GET">
+            <div class="mb-3">
+                <label for="userId" class="form-label">Enter Last Name:</label>
+                <input type="text" id="userId" name="userId" class="form-control" required placeholder="User Id">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+</body>
+
+</html>
