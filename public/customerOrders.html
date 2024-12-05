@@ -1,0 +1,55 @@
+<div class="container mt-5">
+    <h2>Customer Orders Information</h2>
+
+    <button id="fetchCustomerOrders" class="btn btn-primary mt-3">
+        Fetch Customer Orders
+    </button>
+
+    <div id="resultSection" class="mt-4" style="display: none;">
+        <h3>Customer Orders Details</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Last Name</th>
+                    <th>Order Number</th>
+                </tr>
+            </thead>
+            <tbody id="resultsBody">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+document.getElementById('fetchCustomerOrders').addEventListener('click', async () => {
+    try {
+        const response = await fetch('/api/customer-orders');
+        if (!response.ok) {
+            throw new Error('Failed to fetch data');
+        }
+        const data = await response.json();
+        
+        const resultSection = document.getElementById('resultSection');
+        const resultsBody = document.getElementById('resultsBody');
+        
+        // Clear previous results
+        resultsBody.innerHTML = '';
+        
+        // Add new results
+        data.forEach(row => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${row.Lastname || 'N/A'}</td>
+                <td>${row.Orderno || 'N/A'}</td>
+            `;
+            resultsBody.appendChild(tr);
+        });
+        
+        // Show the results section
+        resultSection.style.display = 'block';
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error fetching customer orders data');
+    }
+});
+</script>
