@@ -5,16 +5,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TCSS 445 | PHASE III | Sales Performance Search</title> <!--CHANGE LATER?-->
+    <title>TCSS 445 | Schema Schemers | Sales Performance Search</title> 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/minty/bootstrap.min.css">
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-database"></i> TCSS 445 | Schema Schemers | Group 6</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <!-- <li class="nav-item"><a class="nav-link" href="department.html">Department</a></li> --> <!--EDIT TO ADD LINKS TO OTHER PAGES HERE (in nav b)-->
+                </ul>
+                <!--Uncomment below for search button on Nav bar-->
+                <!-- <form class="d-flex">
+                    <input class="form-control me-sm-2" type="search" placeholder="Search">
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                </form> --> 
+            </div>
+        </div>
+    </nav>
+    
     <div class="container mt-5">
         <h2>Search Sales Performance Information</h2>
+        <div class="alert alert-info mt-3">
+            This report shows sale details based on a minimum number of units sold.
+        </div>
         <form id="projectForm">
             <label for="projectName" class="form-label">Enter Minimum units sold:</label>
-            <input type="text" id="total_units_sold" class="form-control mb-3" placeholder="Enter Minimum units sold" required> <!--HAD TO CHANGE THIS LINE(in case i gotta change again)-->
+            <input type="number" id="total_units_sold" class="form-control mb-3" placeholder="Enter Minimum units sold" required>
             <button type="submit" class="btn btn-primary">Search</button>
         </form>
         <!-- Table for displaying results -->

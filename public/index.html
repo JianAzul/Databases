@@ -4,27 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Storefront</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/minty/bootstrap.min.css">
+    <style>
+        .content-section {
+            padding: 2rem 0;
+        }
+
+        .feature-box {
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation Bar -->
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
         <div class="container">
-            <a class="navbar-brand" href="index.html"><i class="fas fa-database"></i> TCSS 445 | assign4</a>
+            <a class="navbar-brand" href="index.html"><i class="fas fa-database"></i> TCSS 445 | Schema Schemers | Group 6</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link" href="department.html">Department</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="department.html">Department</a></li> --> <!--EDIT TO ADD LINKS TO OTHER PAGES HERE (in nav b)-->
                 </ul>
-                <form class="d-flex">
+                <!--Uncomment below for search button on Nav bar-->
+                <!-- <form class="d-flex">
                     <input class="form-control me-sm-2" type="search" placeholder="Search">
                     <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                </form> --> 
             </div>
         </div>
-    </nav> -->
+    </nav>
     <header>
         <div class="logo">
             <h1>Storefront</h1>
@@ -36,11 +50,11 @@
                 <li><a href="shopping-cart.html">Shopping Cart</a></li>
                 <li><a href="wishlist.html">Wishlist</a></li>
                 <li><a href="account.html">My Account</a></li>
-                <li><a href="salesPerformance.html">Sales Performance</a></li>
+                <!-- <li><a href="salesPerformance.html">Sales Performance</a></li>
                 <li><a href="customerOrders.html">Customer Orders</a></li>
                 <li><a href="recommendedProducts.html">Recommended Product(s) by Customer Id</a></li>
                 <li><a href="productOrderHistory.html">Customers by Number of Orders</a></li>
-                <li><a href="blackProductCustomers.html">Customers by Number of Black Items Wishlisted</a></li>
+                <li><a href="blackProductCustomers.html">Customers by Number of Black Items Wishlisted</a></li> -->
             </ul>
         </nav>
     </header>
@@ -49,7 +63,17 @@
         <section class="hero">
             <h2>Welcome to Our Store!</h2>
             <p>Browse our collection of amazing products and start shopping today.</p>
-            <a href="products.html" class="btn">Shop Now</a>
+            <a href="products.html" class="btn btn-success">Shop Now</a>
+        </section>
+
+        <section class="features">
+            <h2>Analytics and Insights</h2>
+            <p>See Analytics and Insights</p>
+            <a href="salesPerformance.html" class="btn btn-success">Sales Performance</a>
+            <a href="customerOrders.html" class="btn btn-success">Customer Orders</a>
+            <a href="recommendedProducts.html" class="btn btn-success">Recommended Product(s) by Customer Id</a>
+            <a href="productOrderHistory.html" class="btn btn-success">Product Order History</a>
+            <a href="blackProductCustomers.html" class="btn btn-success">Customers by Number of Black Items Wishlisted</a>
         </section>
 
         <section class="features">

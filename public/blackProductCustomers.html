@@ -1,67 +1,95 @@
-<div class="container mt-5">
-    <h2>Customers Interested in Black Products</h2>
+<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TCSS 445 | Schema Schemers | Sales Performance Search</title> 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/minty/bootstrap.min.css">
+    </head>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-database"></i> TCSS 445 | Schema Schemers | Group 6</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <!-- <li class="nav-item"><a class="nav-link" href="department.html">Department</a></li> --> <!--EDIT TO ADD LINKS TO OTHER PAGES HERE (in nav b)-->
+                </ul>
+                <!--Uncomment below for search button on Nav bar-->
+                <!-- <form class="d-flex">
+                    <input class="form-control me-sm-2" type="search" placeholder="Search">
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                </form> --> 
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2>Customers Interested in Black Products</h2>
+        
+        <div class="alert alert-info mt-3">
+            This report shows customers who have added black-colored items to their wishlists.
+        </div>
     
-    <div class="alert alert-info mt-3">
-        This report shows customers who have added black-colored items to their wishlists.
-    </div>
-
-    <button id="fetchCustomers" class="btn btn-primary mt-3">
-        Find Interested Customers
-    </button>
-
-    <div id="resultSection" class="mt-4" style="display: none;">
-        <h3>Customer List</h3>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Customer ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                </tr>
-            </thead>
-            <tbody id="resultsBody">
-            </tbody>
-        </table>
-        <div id="customerCount" class="mt-3 text-muted">
+        <button id="fetchCustomers" class="btn btn-primary mt-3">
+            Find Interested Customers
+        </button>
+    
+        <div id="resultSection" class="mt-4" style="display: none;">
+            <h3>Customer List</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Customer ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsBody">
+                </tbody>
+            </table>
+            <div id="customerCount" class="mt-3 text-muted">
+            </div>
         </div>
     </div>
-</div>
-
-<script>
-document.getElementById('fetchCustomers').addEventListener('click', async () => {
-    try {
-        const response = await fetch('/api/black-product-customers');
-        if (!response.ok) {
-            throw new Error('Failed to fetch data');
+    
+    <script>
+    document.getElementById('fetchCustomers').addEventListener('click', async () => {
+        try {
+            const response = await fetch('/api/black-product-customers');
+            if (!response.ok) {
+                throw new Error('Failed to fetch data');
+            }
+            const data = await response.json();
+            
+            const resultSection = document.getElementById('resultSection');
+            const resultsBody = document.getElementById('resultsBody');
+            const customerCount = document.getElementById('customerCount');
+            
+            // Clear previous results
+            resultsBody.innerHTML = '';
+            
+            // Add new results
+            data.forEach(customer => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${customer.customerid}</td>
+                    <td>${customer.firstname}</td>
+                    <td>${customer.lastname}</td>
+                `;
+                resultsBody.appendChild(tr);
+            });
+            
+            // Update customer count
+            customerCount.textContent = `Total customers found: ${data.length}`;
+            
+            // Show the results section
+            resultSection.style.display = 'block';
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error fetching customer data');
         }
-        const data = await response.json();
-        
-        const resultSection = document.getElementById('resultSection');
-        const resultsBody = document.getElementById('resultsBody');
-        const customerCount = document.getElementById('customerCount');
-        
-        // Clear previous results
-        resultsBody.innerHTML = '';
-        
-        // Add new results
-        data.forEach(customer => {
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td>${customer.customerid}</td>
-                <td>${customer.firstname}</td>
-                <td>${customer.lastname}</td>
-            `;
-            resultsBody.appendChild(tr);
-        });
-        
-        // Update customer count
-        customerCount.textContent = `Total customers found: ${data.length}`;
-        
-        // Show the results section
-        resultSection.style.display = 'block';
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Error fetching customer data');
-    }
-});
-</script>
+    });
+    </script>
+</body>

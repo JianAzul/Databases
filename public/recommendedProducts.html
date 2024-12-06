@@ -5,14 +5,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TCSS 445 | PHASE III | Recommended Products by Customer user id search</title>
+    <title>TCSS 445 | Schema Schemers | Recommended Products by Customer user id search</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/minty/bootstrap.min.css">
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-database"></i> TCSS 445 | Schema Schemers | Group 6</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <!-- <li class="nav-item"><a class="nav-link" href="department.html">Department</a></li> --> <!--EDIT TO ADD LINKS TO OTHER PAGES HERE (in nav b)-->
+                </ul>
+                <!--Uncomment below for search button on Nav bar-->
+                <!-- <form class="d-flex">
+                    <input class="form-control me-sm-2" type="search" placeholder="Search">
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                </form> --> 
+            </div>
+        </div>
+    </nav>
     <div class="container mt-5">
         <h2>Search Customer Information</h2>
         <form action="/recommendedProducts" method="GET">
+            <div class="alert alert-info mt-3">
+                This report shows Recommendation details for Customers given their userId
+            </div>
             <div class="mb-3">
                 <label for="userId" class="form-label">Enter User Id:</label>
                 <input type="text" id="userId" name="userId" class="form-control" required placeholder="User Id">
