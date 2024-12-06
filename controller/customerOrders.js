@@ -1,3 +1,4 @@
+//pattern 1, Query 4
 const db = require('../dbConfig');
 
 const getCustomerOrders = (req, res) => {

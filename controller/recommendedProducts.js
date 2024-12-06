@@ -1,4 +1,4 @@
-//Pattern 1
+//Pattern 1, Query 8
 const db = require('../dbConfig');
 /**
 * The getRecommendationById function in a Node.js application retrieves customer data by

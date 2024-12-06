@@ -1,4 +1,4 @@
-//Pattern 1
+//Pattern 1, Query 10
 const db = require('../dbConfig');
 /**
 * The getCustomers function in a Node.js application retrieves customer data by

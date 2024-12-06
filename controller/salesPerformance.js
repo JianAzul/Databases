@@ -1,5 +1,4 @@
-
-//pattern 2
+//pattern 2, Query 6
 const db = require('../dbConfig');
 // getSalesPerformance is responsible for retrieving 
 const getSalesPerformance = (req, res) => {

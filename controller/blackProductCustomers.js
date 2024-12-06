@@ -1,3 +1,4 @@
+//Pattern 2, Query 9
 const db = require('../dbConfig');
 
 const getBlackProductCustomers = (req, res) => {
