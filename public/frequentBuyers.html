@@ -1,0 +1,67 @@
+<div class="container mt-5">
+    <h2>Frequent Buyers Report</h2>
+    
+    <div class="alert alert-info mt-3">
+        This report shows customers who have ordered 5 or more total items across all their orders.
+    </div>
+
+    <button id="fetchFrequentBuyers" class="btn btn-primary mt-3">
+        View Frequent Buyers
+    </button>
+
+    <div id="resultSection" class="mt-4" style="display: none;">
+        <h3>Customer Order Summary</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Customer ID</th>
+                    <th>Number of Orders</th>
+                    <th>Total Items Ordered</th>
+                </tr>
+            </thead>
+            <tbody id="resultsBody">
+            </tbody>
+        </table>
+        <div id="customerCount" class="mt-3 text-muted">
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('fetchFrequentBuyers').addEventListener('click', async () => {
+    try {
+        const response = await fetch('/api/frequent-buyers');
+        if (!response.ok) {
+            throw new Error('Failed to fetch data');
+        }
+        const data = await response.json();
+        
+        const resultSection = document.getElementById('resultSection');
+        const resultsBody = document.getElementById('resultsBody');
+        const customerCount = document.getElementById('customerCount');
+        
+        // Clear previous results
+        resultsBody.innerHTML = '';
+        
+        // Add new results
+        data.forEach(customer => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${customer.customerid}</td>
+                <td>${customer.order_count}</td>
+                <td>${customer.total_items_ordered}</td>
+            `;
+            resultsBody.appendChild(tr);
+        });
+        
+        // Update customer count
+        customerCount.textContent = `Total frequent buyers found: ${data.length}`;
+        
+        // Show the results section
+        resultSection.style.display = 'block';
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error fetching frequent buyer data');
+    }
+});
+</script>
